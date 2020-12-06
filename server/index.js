@@ -23,13 +23,13 @@ if (!isProduction) {
 	app.use(morgan('dev'));
 } else {
 	app.use(morgan('combined'));
-	app.use((req, res, next) => {
-		if (req.secure) {
-			next();
-		} else {
-			res.redirect('https://' + req.headers.host + req.url);
-		}
-	});
+	// app.use((req, res, next) => {
+	// 	if (req.secure) {
+	// 		next();
+	// 	} else {
+	// 		res.redirect('https://' + req.headers.host + req.url);
+	// 	}
+	// }); // Todo Causing issues on heruko
 }
 
 app.use('/api', api);
